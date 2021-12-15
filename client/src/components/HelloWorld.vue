@@ -31,7 +31,7 @@
           v-bind:key="toDoItem.id"
         >
           <b-form-checkbox v-model="toDoItem.done">
-            {{ toDoItem.title }}
+            {{ toDoItem }}
           </b-form-checkbox>
         </b-list-group-item>
       </b-list-group>
@@ -40,24 +40,26 @@
 </template>
 
 <script>
-import axios from "axios";
+// import axios from "axios";
 
 export default {
   name: "hello",
   data: () => {
     return {
-      toDoItems: [],
+      toDoItems: ["이딲기", "밥먹기"],
     };
   },
-  created() {
-    axios
-      .get("http://127.0.0.1:5000/todo/")
-      .then((response) => {
-        this.toDoItems = response.data.map((r) => r.data);
-      })
-      .catch((e) => {
-        console.log("error : ", e);
-      });
-  },
+  // created() {
+  //   axios
+  //     .get("http://127.0.0.1:3000/todo/")
+  //     .then((response) => {
+  //       this.toDoItems = response.data.map((r) => r.data);
+  //     })
+  //     .catch((e) => {
+  //       console.log("error : ", e);
+  //     });
+  // },
+  // 1. client 단에서 router 설정하기
+  // 이제 server 단에서 todo 요청을 받고, toDoItems 를 응답하기 위한 구조를 만들어보자
 };
 </script>
