@@ -19,6 +19,18 @@ app.use(express.static(path.join(__dirname, 'public')));
 // POST, /create
 app.post("/create", Article.articleCreate);
 
+// GET, /detail (세부)
+app.get("/detail/:id", Article.articleDetail);
+
+// POST, /update
+app.patch("/update", Article.articleUpdate);
+
+// GET, /read (전체)
+app.get("/read", Article.articleRead);
+
+// POST, /delete/:id
+app.delete("/delete/:id", Article.articleDelete);
+
 // app.listen
 app.listen(PORT, () => {
   console.log(`http://localhost:${PORT}`);
