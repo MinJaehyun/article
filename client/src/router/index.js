@@ -1,12 +1,13 @@
 import Vue from 'vue'
-import Router from 'vue-router'
+import VueRouter from 'vue-router'
 import HelloWorld from '../components/HelloWorld.vue'
-import About from '../components/About.vue'
+import Article from '../components/Article.vue'
 
-Vue.use(Router)
+Vue.use(VueRouter)
 
 
-export default new Router({
+export default new VueRouter({
+  mode: "history",
   routes: [
     {
       path: '/',             // http://localhost:8080/으로 접속 시
@@ -14,9 +15,9 @@ export default new Router({
       component: HelloWorld  // HelloWorld.vue 컴포넌트를 이어줘라. 어디에? <router-view></router-view>에
     },
     {
-      path: '/about',
-      name: 'About',
-      component: About
+      path: '/detail/:id',  // TODO: / 경로 확인하기 
+      name: 'Article',
+      component: Article
     },
   ]
 })
