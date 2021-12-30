@@ -7,8 +7,6 @@ const { Article } = require("./routes");
 const app = express();
 const PORT = 3000;
 
-require('dotenv').config()
-
 // middleware
 app.use(cors());
 app.use(logger('dev'));
@@ -19,7 +17,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 // POST, /create
 app.post("/create", Article.articleCreate);
 
-// GET, /detail (세부)
+// GET, /detail (상세)
 app.get("/detail/:id", Article.articleDetail);
 
 // POST, /update
