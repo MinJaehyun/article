@@ -1,7 +1,13 @@
 <template>
   <div>
-    <h1>게시글 만들기</h1>
-    <textarea v-model="content" cols="40" rows="3"></textarea>
+    <h1>게시판</h1>
+    <hr />
+    <textarea
+      v-model="content"
+      cols="40"
+      rows="3"
+      placeholder="게시글을 입력해 주세요"
+    ></textarea>
     <div>
       <button @click="createArticle">생성하기</button>
     </div>
