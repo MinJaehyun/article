@@ -1,16 +1,16 @@
 <template>
   <div>
     <div class="card">
-      <Card :article="article" @update="updateCard" @delete="moveToHome" />
+      <Detail :article="article" @update="updateCard" @delete="moveToHome" />
     </div>
   </div>
 </template>
 <script>
 import axios from "axios";
-import Card from "./Card.vue";
+import Detail from "./Detail.vue";
 export default {
   components: {
-    Card,
+    Detail,
   },
   data() {
     return {

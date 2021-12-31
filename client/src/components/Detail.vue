@@ -12,8 +12,6 @@
       <!-- {{ article.createdAt | moment("dddd. MMMM Do YYYY") }} -->
       {{ article.createdAt | moment("Y년 M월 D일 HH:mm:ss") }}
     </div>
-    <!-- 이동 버튼 -->
-    <button v-if="!isEditing" @click="moveToArticle">이동</button>
     <!-- 수정, 수정취소 토글 버튼 만들기  -->
     <button @click="toggleTextArticle">
       {{ !isEditing ? "수정" : "수정 취소" }}
