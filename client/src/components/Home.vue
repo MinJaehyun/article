@@ -53,7 +53,7 @@ export default {
       }
       // 글 입력한 경우 입력한 글을 넘겨줘야 한다
       // POST, /create
-      const { data } = await axios.patch("http://localhost:3000/create", {
+      const { data } = await axios.post("http://localhost:3000/create", {
         content: this.content,
       });
       // console.log("content: ", data);
@@ -65,6 +65,7 @@ export default {
       // 데이터가 있는 경우
       // window.alert("create Success!");
       this.articles.push(data);
+      this.content = "";
     },
     updateCard({ id, content }) {
       // Card 컴포넌트에서 update 클릭 시, 동봉한 내용을 찾아 업데이트 한다

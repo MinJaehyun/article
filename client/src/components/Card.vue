@@ -12,6 +12,8 @@
       <!-- {{ article.createdAt | moment("dddd. MMMM Do YYYY") }} -->
       {{ article.createdAt | moment("Y년 M월 D일 HH:mm:ss") }}
     </div>
+    <!-- 이동 버튼 -->
+    <button v-if="!isEditing" @click="moveToArticle">이동</button>
     <!-- 수정, 수정취소 토글 버튼 만들기  -->
     <button @click="toggleTextArticle">
       {{ !isEditing ? "수정" : "수정 취소" }}
@@ -43,6 +45,16 @@ export default {
   },
 
   methods: {
+    moveToArticle() {
+      // 이동 버튼 클릭 시, 상세 게시글로 이동하도록 만들기
+      // $router.push("경로")
+      this.$router.push({
+        name: "Article",
+        params: {
+          id: this.article._id,
+        },
+      });
+    },
     toggleTextArticle() {
       // data 의 content 안에 props 로 내려받은 content 를 넣는다
       this.content = this.article.content;
@@ -56,7 +68,7 @@ export default {
         id: this.article._id,
         content: this.content,
       });
-      console.log("data: ", data);
+      // console.log("data: ", data);
       // 이제 DB 에 저장된 값인 data 를 이용하여 client 업데이트 하기
       if (!data) return;
       this.$emit("update", { content: this.content, id: this.article._id });

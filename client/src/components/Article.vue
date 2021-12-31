@@ -1,19 +1,22 @@
 <template>
   <div>
     <div class="card">
-      <div class="content">{{ article.content }}</div>
-      <div class="createdAt">{{ article.createdAt }}</div>
+      <Card :article="article" @update="updateCard" @delete="moveToHome" />
     </div>
   </div>
 </template>
 <script>
 import axios from "axios";
+import Card from "./Card.vue";
 export default {
+  components: {
+    Card,
+  },
   data() {
     return {
       // article: null,
       article: {
-        id: null,
+        _id: null,
         content: null,
         createdAt: null,
       },
@@ -28,8 +31,22 @@ export default {
       // detail
       const { id } = this.$route.params;
       const { data } = await axios.get(`http://localhost:3000/detail/${id}`);
-      console.log(data);
+      // console.log(data);
       this.article = { ...data };
+    },
+
+    /**
+     * content 로 내려줄 경우: 모든 내용을 받게 되고
+     *
+     * { content } 로 내려줄 경우: content 만 받는다!
+     */
+    updateCard({ content }) {
+      this.article.content = content;
+    },
+    moveToHome() {
+      this.$router.push({
+        name: "Home",
+      });
     },
   },
 };
