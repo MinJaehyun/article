@@ -26,7 +26,7 @@ app.patch("/update", Article.articleUpdate);
 // GET, /read (전체)
 app.get("/read", Article.articleRead);
 
-// POST, /delete/:id
+// delete, /delete/:id
 app.delete("/delete/:id", Article.articleDelete);
 
 // app.listen
